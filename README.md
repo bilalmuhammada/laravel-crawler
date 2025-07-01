@@ -19,48 +19,91 @@ Laravel is a web application framework with expressive, elegant syntax. We belie
 - [Robust background job processing](https://laravel.com/docs/queues).
 - [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
 
-## Learning Laravel
+## PHP Product Crawler
+Description
+This PHP script crawls product data from:
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+🔗 https://sandbox.oxylabs.io/products
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+It extracts the following fields per product:
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+title
 
-## Laravel Sponsors
+price
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+image_url
 
-### Premium Partners
+description (if available)
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+category or another classification field
 
-## Contributing
+The script outputs the collected data as JSON.
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+# Requirements
+PHP 7.4 or higher
 
-## Code of Conduct
+``` php crawler.php > products.json  ```
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
 
-## Security Vulnerabilities
+The JSON file products.json will contain the scraped product data.
+# output
+![image](https://github.com/user-attachments/assets/bb3df614-2449-48b5-b086-ae6d6e7d5da6)
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+# Configure Database
+Set your database connection in .env:
+ ``` DB_CONNECTION=mysql ```
+ 
+ ``` DB_HOST=127.0.0.1 ```
+ 
+  ```DB_PORT=3306 ```
+  
+ ``` DB_DATABASE=oyxlab ```
+ 
+ ``` DB_USERNAME=root ```
+ 
+ ``` DB_PASSWORD= ```
+ 
+ ```QUEUE_CONNECTION=database ```
 
-## License
+# Command
+``` php artisan migrate ```
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+``` php artisan queue:work ```
+
+# import data in data base
+![prod tbale](https://github.com/user-attachments/assets/bafad2ae-2fea-4fc6-bd7c-192eea47be3a)
+![imag table](https://github.com/user-attachments/assets/5a32cdc9-b2be-4c30-a599-056780f2eb0c)
+
+# Filament Admin Panel
+
+ ``` composer require filament/filament:"^3.0"  ```
+
+ ``` php artisan filament:install  ```
+ 
+ ```  php artisan make:filament-user ```
+
+
+![pro2](https://github.com/user-attachments/assets/8b8dbdc9-3b92-4ebc-b351-8e2b214aec2d)
+![pro1](https://github.com/user-attachments/assets/3aa31946-97e2-43ad-9410-9453b9f3c271)
+![login](https://github.com/user-attachments/assets/a7abf0be-286b-495c-9d47-fed1a405714d)
+![edit](https://github.com/user-attachments/assets/6ed76e50-f544-4cbe-8b33-8c75552cfdac)
+![dashb](https://github.com/user-attachments/assets/7680a55a-6b4d-4587-ba85-71edc36ef4fb)
+
+# Dynamic Frontend – Livewire + AlpineJS
+
+``` composer require livewire/livewire ```
+
+``` npm install -D tailwindcss postcss autoprefixer vite laravel-vite-plugin  ```
+
+![image](https://github.com/user-attachments/assets/118a2e31-414a-4256-8d2f-b91e8a32dc6a)
+
+
+
+# database inside public folder
+
+``` php artisan serve ```
+
+``` npm run dev ```
+
+
